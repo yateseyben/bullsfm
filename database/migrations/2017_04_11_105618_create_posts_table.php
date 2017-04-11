@@ -9,8 +9,10 @@ class CreatePostsTable extends Migration {
 	{
 		Schema::create('posts', function(Blueprint $table) {
 			$table->increments('id');
-			$table->timestamps();
+			$table->smallInteger('topic_id');
+			$table->smallInteger('user_id');
 			$table->string('content');
+			$table->timestamps();
 		});
 	}
 
