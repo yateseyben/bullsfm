@@ -32,6 +32,17 @@ class PostTest extends TestCase
         $this->AssertEquals($post->user_id, $user->id);
     }
 
+    public function testAPostBelongsToAForum()
+    {
+        $user = $this->giveMeAForum();
+
+        $post = $this->giveMeAPost();
+
+        $post->forum()->associate($forum);
+
+        $this->AssertEquals($post->forum_id, $forum->id);
+    }
+
     /**
      * Returns a Post object
      *
@@ -41,6 +52,17 @@ class PostTest extends TestCase
         $topic = factory(Post::class)->make();
 
         return $topic;
+    }
+
+    /**
+     * Returns a forum
+     *
+     */
+    public function giveMeAForum()
+    {
+        $forum = factory(Forum::class)->make();
+
+        return $forum;
     }
 
     /**
@@ -59,8 +81,8 @@ class PostTest extends TestCase
      */
     public function giveMeAUser()
     {
-    	$user = factory(User::class)->make();
+        $user = factory(User::class)->make();
 
-    	return $user;
+        return $user;
     }
 }
