@@ -25,4 +25,9 @@ class Topic extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function forum()
+    {
+        return $this->belongsTo('App\Models\Forum', 'forum_id');
+    }
+
 }
