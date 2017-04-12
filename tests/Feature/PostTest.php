@@ -49,9 +49,7 @@ class PostTest extends TestCase
      */
     public function giveMeAPost()
     {
-        $topic = factory(Post::class)->make();
-
-        return $topic;
+        return factory(Post::class)->make();
     }
 
     /**
@@ -60,9 +58,7 @@ class PostTest extends TestCase
      */
     public function giveMeAForum()
     {
-        $forum = factory(Forum::class)->make();
-
-        return $forum;
+        return factory(Forum::class)->make();
     }
 
     /**
@@ -71,9 +67,7 @@ class PostTest extends TestCase
      */
     public function giveMeATopic()
     {
-        $topic = factory(Topic::class)->make();
-
-        return $topic;
+        return factory(Topic::class)->make();
     }
 
     /**
@@ -81,8 +75,6 @@ class PostTest extends TestCase
      */
     public function giveMeAUser()
     {
-        $user = factory(User::class)->make();
-
-        return $user;
+        return factory(User::class)->make();
     }
 }
