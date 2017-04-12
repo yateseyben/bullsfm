@@ -22,3 +22,26 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Topic::class, function (Faker\Generator $faker) {
+
+    return [
+        'title' => 'A title of a topic',
+        'user_id' => 1,
+        'content' => 'Much content in this topic.',
+        'topic_status_id' => 1,
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
+
+    return [
+        'content' => 'All of the content',
+        'user_id' => 1,
+        'topic_id' => 0,
+    ];
+});
+
+
