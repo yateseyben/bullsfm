@@ -20,4 +20,9 @@ class Topic extends Model
         return $this->belongsTo('App\Models\TopicStatus', 'topic_status_id');
     }
 
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'user_id');
+    }
+
 }
