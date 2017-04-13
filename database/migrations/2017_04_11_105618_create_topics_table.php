@@ -12,6 +12,7 @@ class CreateTopicsTable extends Migration {
 			$table->text('title');
 			$table->text('content');
 			$table->smallInteger('user_id');
+			$table->smallInteger('forum_id');
 			$table->timestamps();
 			$table->string('topic_status_id');
 		});
