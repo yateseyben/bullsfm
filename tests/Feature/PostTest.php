@@ -2,19 +2,46 @@
 
 namespace Tests\Feature;
 
-use App\Models\Post;
+use App\Models\Forum;
 use App\Models\Topic;
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Tests\Helpers\ForumHelper;
+use Tests\Helpers\PostHelper;
+use Tests\Helpers\TopicHelper;
+use Tests\Helpers\UserHelper;
 use Tests\TestCase;
 
 class PostTest extends TestCase
 {
+    use DatabaseTransactions;
+
+    /**
+     * constructor
+     * @param
+     */
+    public function __construct()
+    {
+        $this->postHelper = new PostHelper;
+        $this->forumHelper = new ForumHelper;
+        $this->topicHelper = new TopicHelper;
+        $this->userHelper = new UserHelper;
+    }
+
+    public function testAPostCanBeDeleted()
+    {
+        $post = $this->postHelper->newPost();
+
+        $post->delete();
+
+        $this->assertNotNull($post->deleted_at);
+    }
 
     public function testAPostBelongsToATopic()
     {
-        $topic = $this->giveMeATopic();
+        $topic = $this->topicHelper->newTopic();
 
-        $post = $this->giveMeAPost();
+        $post = $this->postHelper->newPost();
 
         $post->topic()->associate($topic);
 
@@ -23,9 +50,9 @@ class PostTest extends TestCase
 
     public function testAPostBelongsToAUser()
     {
-        $user = $this->giveMeAUser();
+        $user = $this->userHelper->newUser();
 
-        $post = $this->giveMeAPost();
+        $post = $this->postHelper->newPost();
 
         $post->user()->associate($user);
 
@@ -34,47 +61,12 @@ class PostTest extends TestCase
 
     public function testAPostBelongsToAForum()
     {
-        $user = $this->giveMeAForum();
+        $forum = $this->forumHelper->newForum();
 
-        $post = $this->giveMeAPost();
+        $post = $this->postHelper->newPost();
 
         $post->forum()->associate($forum);
 
         $this->AssertEquals($post->forum_id, $forum->id);
-    }
-
-    /**
-     * Returns a Post object
-     *
-     */
-    public function giveMeAPost()
-    {
-        return factory(Post::class)->make();
-    }
-
-    /**
-     * Returns a forum
-     *
-     */
-    public function giveMeAForum()
-    {
-        return factory(Forum::class)->make();
-    }
-
-    /**
-     * Returns a topic
-     *
-     */
-    public function giveMeATopic()
-    {
-        return factory(Topic::class)->make();
-    }
-
-    /**
-     * Returns a user
-     */
-    public function giveMeAUser()
-    {
-        return factory(User::class)->make();
     }
 }
