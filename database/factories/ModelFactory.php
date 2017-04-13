@@ -31,6 +31,7 @@ $factory->define(App\Models\Topic::class, function (Faker\Generator $faker) {
         'user_id' => 1,
         'content' => 'Much content in this topic.',
         'topic_status_id' => 1,
+        'forum_id' => 1,
     ];
 });
 
@@ -43,6 +44,14 @@ $factory->define(App\Models\Post::class, function (Faker\Generator $faker) {
         'topic_id' => 0,
         'deleted_at' => null
 
+    ];
+});
+
+/** @var \Illuminate\Database\Eloquent\Factory $factory */
+$factory->define(App\Models\Forum::class, function (Faker\Generator $faker) {
+
+    return [
+        'name' => 'The forum of tests',
     ];
 });
 
