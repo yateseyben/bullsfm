@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Topic;
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\Helpers\PostHelper;
 use Tests\Helpers\TopicHelper;
 use Tests\Helpers\UserHelper;
@@ -11,6 +12,8 @@ use Tests\TestCase;
 
 class TopicTest extends TestCase
 {
+    use DatabaseTransactions;
+
     public function __construct()
     {
         $this->postHelper = new PostHelper;
@@ -18,6 +21,9 @@ class TopicTest extends TestCase
         $this->userHelper = new UserHelper;
     }
 
+    /**
+    * @test
+    */
     public function testATopicBelongsToAUser()
     {
         $topic = $this->topicHelper->newTopic();
@@ -28,4 +34,6 @@ class TopicTest extends TestCase
 
         $this->assertEquals($topic->user_id, $user->id);
     }
+
+
 }

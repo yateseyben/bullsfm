@@ -58,15 +58,4 @@ class PostTest extends TestCase
 
         $this->AssertEquals($post->user_id, $user->id);
     }
-
-    public function testAPostBelongsToAForum()
-    {
-        $forum = $this->forumHelper->newForum();
-
-        $post = $this->postHelper->newPost();
-
-        $post->forum()->associate($forum);
-
-        $this->AssertEquals($post->forum_id, $forum->id);
-    }
 }
