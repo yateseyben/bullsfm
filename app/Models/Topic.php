@@ -12,7 +12,7 @@ class Topic extends Model
 
     public function posts()
     {
-        return $this->hasMany('App\Models\Post', 'id');
+        return $this->hasMany('App\Models\Post');
     }
 
     public function topicStatus()
@@ -29,5 +29,12 @@ class Topic extends Model
     {
         return $this->belongsTo('App\Models\Forum', 'forum_id');
     }
+
+    public function savePost()
+    {
+        
+    }
+
+    
 
 }

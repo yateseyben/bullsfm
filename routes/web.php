@@ -25,3 +25,15 @@ Route::group(['prefix' => 'forums'], function() {
         'uses' => 'ForumsController@index',
     ]);
 });
+
+Route::group(['prefix' => 'topics'], function() {
+    Route::get('/show/{id}', [
+        'as' => 'topics.show',
+        'uses' => 'TopicsController@show',
+    ]);
+    Route::post('/{id}/createPost/',[
+    	'as' => 'topics.createPost',
+    	'uses' => 'TopicsController@createPost',
+    	]);
+
+})			;
