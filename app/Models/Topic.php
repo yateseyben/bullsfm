@@ -10,9 +10,16 @@ class Topic extends Model
     protected $table = 'topics';
     public $timestamps = true;
 
+        protected $fillable = [
+        'title',
+        'content',
+        'forum_id',
+        'user_id'
+    ];
+
     public function posts()
     {
-        return $this->hasMany('App\Models\Post');
+    return $this->hasMany('App\Models\Post');
     }
 
     public function topicStatus()
@@ -29,12 +36,4 @@ class Topic extends Model
     {
         return $this->belongsTo('App\Models\Forum', 'forum_id');
     }
-
-    public function savePost()
-    {
-        
-    }
-
-    
-
 }

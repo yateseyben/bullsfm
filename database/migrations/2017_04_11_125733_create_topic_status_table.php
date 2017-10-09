@@ -14,7 +14,7 @@ class CreateTopicStatusTable extends Migration
     public function up()
     {
         Schema::create('topic_statuses',function(Blueprint $table) {
-            $table->increments('id');
+            $table->increments('id')->default(1);
             $table->string('name');
             $table->string('description');
         });
@@ -28,6 +28,6 @@ class CreateTopicStatusTable extends Migration
      */
     public function down()
     {
-        Schema::drop('topics');
+        Schema::drop('topic_statuses');
     }
 }
