@@ -24,6 +24,18 @@ Route::group(['prefix' => 'forums'], function() {
         'as' => 'forums.index',
         'uses' => 'ForumsController@index',
     ]);
+    Route::get('/show/{id}',[
+        'as' => 'forums.show',
+        'uses' => 'ForumsController@show',
+    ]);
+    Route::get('/{id}/create-topic',[
+        'as' => 'forums.createTopic',
+        'uses' => 'ForumsController@createTopic',
+    ]);
+    Route::post('/{id}/store-topic',[
+        'as' => 'forums.storeTopic',
+        'uses' => 'ForumsController@storeTopic',
+    ]);
 });
 
 Route::group(['prefix' => 'topics'], function() {
@@ -36,4 +48,4 @@ Route::group(['prefix' => 'topics'], function() {
     	'uses' => 'TopicsController@createPost',
     	]);
 
-})			;
+});
