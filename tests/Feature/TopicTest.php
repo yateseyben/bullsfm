@@ -35,5 +35,31 @@ class TopicTest extends TestCase
         $this->assertEquals($topic->user_id, $user->id);
     }
 
+    public function testAnAuthorCanEditTheirTopic()
+    {
+        $topic = $this->topicHelper->newTopic();
 
+        $this->be(User::find($topic->user->id));
+
+        $edit['content'] = 'This is the new content of the topic.';
+
+        $topic->updateTopic($edit);
+
+        $this->assertEquals($topic->content, $edit['content']);
+    }
+
+    public function testAUserCannotEditAnotherUsersTopic()
+    {
+        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
+
+        $topic = $this->topicHelper->newTopic();
+
+        $user = $this->userHelper->newUser();
+
+        $this->be($user);
+
+        $edit['content'] = 'This is the new content of the topic.';
+
+        $topic->updateTopic($edit);
+    }
 }
