@@ -14,7 +14,6 @@ class TopicsController extends Controller
 	{
 		$topic = Topic::findOrFail($id);
 		$posts = $topic->posts;
-		//dd($topic->posts);
 		return View::make('topics.show')->with('topic', $topic)->with('posts', $posts);
 	}
 
@@ -28,4 +27,19 @@ class TopicsController extends Controller
 
 		return redirect(route('topics.show', $topicID));
 	}
+
+	public function edit($id)
+	{
+		$topic = Topic::findOrFail($id);
+		return view::make('topics.edit')->with('topic', $topic);
+	}
+
+	public function update($id, Request $request)
+	{
+		$topic = Topic::findOrFail($id);
+		$input = $request->only(['title', 'content']);
+		$topic->updateTopic($input);
+		return redirect(route('topics.show', $topic->id));
+	}
+
 }
