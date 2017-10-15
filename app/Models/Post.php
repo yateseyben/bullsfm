@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Gate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -27,4 +28,12 @@ class Post extends Model
         return $this->belongsTo('App\Models\User', 'user_id');
     }
 
+    public function updatePost($input)
+    {
+        if(Gate::denies('update', $this))
+            {
+                abort(403, 'You do not have the correct permissions to do that.');
+            }
+        $this->update($input);
+    }
 }

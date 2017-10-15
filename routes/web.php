@@ -55,5 +55,16 @@ Route::group(['prefix' => 'topics'], function() {
         'as' => 'topics.update',
         'uses' => 'TopicsController@update'
     ]);
-
 });
+
+Route::group(['prefix' => 'posts'], function() {
+    Route::get('/edit/{id}', [
+        'as' => 'posts.edit',
+        'uses' => 'PostsController@edit'
+    ]);
+    Route::post('update/{id}', [
+        'as' => 'posts.updatePost',
+        'uses' => 'PostsController@updatePost'
+    ]);
+});
+

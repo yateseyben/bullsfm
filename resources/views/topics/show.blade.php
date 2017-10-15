@@ -16,7 +16,7 @@
 		@foreach($posts as $post)
 		<div class = "post">
 			<b>{{ $post->user->name }}</b>
-			<p>{{ $post->content }}</p>
+			<p>{{ $post->content }}</p><a href = "{{ route('posts.edit', $post->id) }}">Edit</a>
 		</div>
 		@endforeach
 	</div>
