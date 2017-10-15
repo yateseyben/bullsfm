@@ -58,4 +58,32 @@ class PostTest extends TestCase
 
         $this->AssertEquals($post->user_id, $user->id);
     }
+
+    public function testAUserCanEditTheirTopic()
+    {
+        $post = $this->postHelper->newPost();
+
+        $this->be($post->user);
+
+        $input = ['content' => 'Some edited content.'];
+
+        $post->updatePost($input);
+
+        $this->AssertEquals($post->content, 'Some edited content.');
+    }
+
+    public function testAUserCannotEditAnotherUsersPost()
+    {
+        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
+
+        $randomUser = $this->userHelper->newUser();
+
+        $post = $this->postHelper->newPost();
+
+        $this->be($randomUser);
+
+        $input = ['content' => 'Some edited content.'];
+
+        $post->updatePost($input);
+    }
 }
