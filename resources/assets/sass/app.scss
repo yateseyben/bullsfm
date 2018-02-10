@@ -7,3 +7,17 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+.ben-navbar li {
+	display: inline;
+	list-style-type: none;
+  	height: 40px;
+  	line-height: 40px;
+  	padding-right: 40px;
+
+}
+
+.ben-navbar {
+	background-color: black;
+}
+
