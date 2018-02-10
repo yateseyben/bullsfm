@@ -4,7 +4,7 @@
 
 @foreach($forums as $forum)
 <div class = "forum-link">
-	{{ $forum->name }}
+	<a href = "{{ route('forums.show',$forum->id) }}" >{{ $forum->name }}</a>
 </div>
 @endforeach
 @endsection
