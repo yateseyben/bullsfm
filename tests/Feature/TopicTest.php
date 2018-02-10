@@ -14,8 +14,9 @@ class TopicTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function __construct()
+    public function setUp()
     {
+        parent::setUp();
         $this->postHelper = new PostHelper;
         $this->topicHelper = new TopicHelper;
         $this->userHelper = new UserHelper;

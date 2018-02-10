@@ -13,8 +13,9 @@ class ForumTest extends TestCase
 {
     use DatabaseTransactions;
 
-    public function __construct()
+    public function setUp()
     {
+        parent::setUp();
     	$this->forumHelper = new ForumHelper;
         $this->topicHelper = new TopicHelper;
     }

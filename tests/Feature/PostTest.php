@@ -20,8 +20,9 @@ class PostTest extends TestCase
      * constructor
      * @param
      */
-    public function __construct()
+    public function setUp()
     {
+        parent::setUp();
         $this->postHelper = new PostHelper;
         $this->forumHelper = new ForumHelper;
         $this->topicHelper = new TopicHelper;
