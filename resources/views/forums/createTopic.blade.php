@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <h1>Create a Topic</h1>
 
 {{ Form::open(array('route' => ['forums.storeTopic', $forum->id], 'method' => 'post')) }}
@@ -10,3 +12,4 @@
 </div>
 
 	{{ Form::close() }}
+@endsection

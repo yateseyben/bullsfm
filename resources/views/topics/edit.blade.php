@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <h1>Create a Topic</h1>
 
 <div class = "form">
@@ -10,3 +12,4 @@
 
 	{{ Form::close() }}
 </div>
+@endsection

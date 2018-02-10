@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <h1>Topic Title {{ $topic->title }}</h1>
 <b>Created By {{ $topic->user->name }}</b>
 <div class="topic-content">
@@ -24,3 +26,4 @@
 	{!! Form::close() !!}
 
 </div>
+@endsection

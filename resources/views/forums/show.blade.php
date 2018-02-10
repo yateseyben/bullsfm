@@ -1,3 +1,5 @@
+@extends('layouts.app')
+@section('content')
 <h1>{{ $forum->name }}</h1>
 
 <div class = "topic-list">
@@ -5,3 +7,4 @@
 	<a href = "{{ route('topics.show', $topic->id) }}">{{ $topic->title }}</a>
 	@endforeach
 </div>
+@endsection
