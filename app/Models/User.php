@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Post', 'id');
     }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
 }
