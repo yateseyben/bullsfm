@@ -22,4 +22,11 @@ class PostsController extends Controller
 		$post->updatePost($input);
 		return redirect(route('topics.show', $post->topic->id));
 	}
+
+	public function delete($id)
+	{
+		$post = Post::findOrFail($id);
+		$post->deletePost();
+		return redirect(route('topics.show', $post->topic->id));
+	}
 }

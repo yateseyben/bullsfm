@@ -21,4 +21,16 @@ class PostPolicy
     {
         return $user->id == $post->user->id;
     }
+
+    /**
+     * Determine if the given post can be deleted by the user.
+     *
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $post
+     * @return bool
+     */
+    public function delete(User $user, Post $post)
+    {
+        return $user->id == $post->user->id;
+    }
 }

@@ -69,5 +69,9 @@ Route::group(['prefix' => 'posts'], function() {
         'as' => 'posts.updatePost',
         'uses' => 'PostsController@updatePost'
     ]);
+    Route::get('delete/{id}', [
+        'as' => 'posts.delete',
+        'uses' => 'PostsController@delete'
+    ]);
 });
 

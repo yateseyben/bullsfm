@@ -28,13 +28,28 @@ class PostTest extends TestCase
         $this->userHelper = new UserHelper;
     }
 
-    public function testAPostCanBeDeleted()
+    public function testAUserCanDeleteTheirPost()
     {
         $post = $this->postHelper->newPost();
+
+        $this->be($post->user);
 
         $post->delete();
 
         $this->assertNotNull($post->deleted_at);
+    }
+
+    public function testAUserCannotDeleteAnotherUsersPost()
+    {
+        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
+
+        $post = $this->postHelper->newPost();
+
+        $user = $this->userHelper->newUser();
+
+        $this->be($user);
+
+        $post->deletePost();
     }
 
     public function testAPostBelongsToATopic()

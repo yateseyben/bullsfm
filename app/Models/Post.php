@@ -36,4 +36,13 @@ class Post extends Model
             }
         $this->update($input);
     }
+
+    public function deletePost()
+    {
+        if(Gate::denies('delete', $this))
+            {
+                abort(403, 'You do not have the correct permissions to do that.');
+            }
+        $this->delete();
+    }
 }
