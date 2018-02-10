@@ -13,8 +13,8 @@ class TopicPolicy
     /**
      * Determine if the given post can be updated by the user.
      *
-     * @param  \App\User  $user
-     * @param  \App\Post  $post
+     * @param  \App\Models\User  $user
+     * @param  \App\Models\Post  $topic
      * @return bool
      */
     public function update(User $user, Topic $topic)
