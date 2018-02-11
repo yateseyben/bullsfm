@@ -19,6 +19,12 @@ class TopicsController extends Controller
 
 	public function createPost($topicID, Request $request)
 	{
+		if(!Auth::check())
+			{
+				$request->session()->flash('auth_error', 'You must be logged in to create a Post.');
+				return redirect(route('topics.show', $topicID));
+			}
+			
 		$input = $request->only('content');
 		$input['user_id'] = Auth::id();
 		$input['topic_id'] = $topicID;
