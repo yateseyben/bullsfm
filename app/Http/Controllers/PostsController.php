@@ -9,9 +9,15 @@ use View;
 
 class PostsController extends Controller
 {
-	public function edit($id)
+	public function edit($id, Request $request)
 	{
 		$post = Post::findOrFail($id);
+
+		if($request->user()->cannot('update', $post))
+		{
+			$request->session()->flash('auth_error', 'You cannot edit another user\'s post');
+			return redirect(route('topics.show', $post->topic->id));
+		}
 		return view::make('posts.edit')->with('post', $post);
 	}
 
