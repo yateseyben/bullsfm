@@ -33,7 +33,7 @@
 	@foreach($posts as $post)
 	<div class = "post">
 		<b>{{ $post->user->name }}</b>
-		<p>{{ $post->content }}</p>@can('update', $post)<a href = "{{ route('posts.edit', $post->id) }}">Edit</a>@endcan <a href = "{{ route('posts.delete', $post->id) }}">Delete</a>
+		<p>{{ $post->content }}</p>@can('update', $post)<a href = "{{ route('posts.edit', $post->id) }}">Edit</a>@endcan @can('delete', $post)<a href = "{{ route('posts.delete', $post->id) }}">Delete</a>@endcan
 	</div>
 	@endforeach
 </div>

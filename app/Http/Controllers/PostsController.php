@@ -29,9 +29,16 @@ class PostsController extends Controller
 		return redirect(route('topics.show', $post->topic->id));
 	}
 
-	public function delete($id)
+	public function delete($id, Request $request)
 	{
 		$post = Post::findOrFail($id);
+
+		if($request->user()->cannot('delete', $post))
+		{
+			$request->session()->flash('auth_error', 'You cannot delete another user\'s post');
+			return redirect(route('topics.show', $post->topic->id));
+		}
+
 		$post->deletePost();
 		return redirect(route('topics.show', $post->topic->id));
 	}
