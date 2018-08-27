@@ -16,7 +16,8 @@ class Topic extends Model
         'title',
         'content',
         'forum_id',
-        'user_id'
+        'user_id',
+        'topic_status_id'
     ];
 
     public function posts()

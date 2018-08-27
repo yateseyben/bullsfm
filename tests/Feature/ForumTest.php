@@ -32,7 +32,7 @@ class ForumTest extends TestCase
     {
         $this->be(User::findOrFail(1));
     	$forum = $this->forumHelper->newForum();
-        $input = collect(['title' => 'A topic title', 'content' => 'Some content text']);
+        $input = collect(['title' => 'A topic title', 'content' => 'Some content text', 'topic_status_id' => 1]);
     	$topic = $forum->createTopic($input);  
     	$this->assertEquals(Topic::all()->last()->title,'A topic title');
      }

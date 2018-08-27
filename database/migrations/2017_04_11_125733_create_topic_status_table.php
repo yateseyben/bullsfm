@@ -14,7 +14,7 @@ class CreateTopicStatusTable extends Migration
     public function up()
     {
         Schema::create('topic_statuses',function(Blueprint $table) {
-            $table->increments('id')->default(1);
+            $table->increments('id');
             $table->string('name');
             $table->string('description');
         });
