@@ -22,4 +22,12 @@ class Forum extends Model
         $input['topic_status_id'] = 1;
         Topic::create($input->toArray());
     }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 }

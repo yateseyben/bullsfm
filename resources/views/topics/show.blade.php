@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
-<h1>Topic Title {{ $topic->title }}</h1>
+<div class ="breadcrumbs">
+	<a href="{{ route('forums.index') }}">Forums</a> < <a href="{{ route('forums.show', $topic->forum->id) }}"> {{ $topic->forum->getName() }}</a> < <b>{{ $topic->getTitle() }}</b>
+</div>
+<h1>{{ $topic->getTitle() }}</h1>
 <b>Created By {{ $topic->user->name }}</b>
 <div class="topic-content">
 	<p>Content: {{ $topic->content }}</p>

@@ -60,4 +60,12 @@ class Topic extends Model
                 $this->update($input);
                 return redirect(route('topics.show', $this->id));   
     }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
 }

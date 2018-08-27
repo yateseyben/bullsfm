@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+<div class ="breadcrumbs">
+	<b>Forums</b>
+<div class ="breadcrumbs">
 <h1>Forums</h1>
 
 @foreach($forums as $forum)
