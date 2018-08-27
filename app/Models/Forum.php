@@ -16,9 +16,10 @@ class Forum extends Model
 
     public function createTopic($request)
     {
-        $input = $request->only(['title', 'content', 'topic_status_id']);
+        $input = $request->only(['title', 'content']);
         $input['forum_id'] = $this->id;
         $input['user_id'] = Auth::id();
+        $input['topic_status_id'] = 1;
         Topic::create($input->toArray());
     }
 }
