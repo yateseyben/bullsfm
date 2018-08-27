@@ -31,6 +31,6 @@ class PostPolicy
      */
     public function delete(User $user, Post $post)
     {
-        return $user->id == $post->user->id;
+        return $user->can('delete other users posts') || $user->id == $post->user->id;
     }
 }

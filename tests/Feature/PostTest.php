@@ -27,6 +27,7 @@ class PostTest extends TestCase
         $this->forumHelper = new ForumHelper;
         $this->topicHelper = new TopicHelper;
         $this->userHelper = new UserHelper;
+        resolve(\Spatie\Permission\PermissionRegistrar::class)->registerPermissions();
     }
 
     public function testAUserCanDeleteTheirPost()
@@ -101,5 +102,18 @@ class PostTest extends TestCase
         $input = ['content' => 'Some edited content.'];
 
         $post->updatePost($input);
+    }
+
+    public function testAModeratorCanDeleteAnotherUsersPost()
+    {
+        $moderator = $this->userHelper->newModerator();
+
+        $post = $this->postHelper->newPost();
+
+        $this->be($moderator);
+
+        $post->deletePost();
+
+        $this->assertNotNull($post->deleted_at);
     }
 }
