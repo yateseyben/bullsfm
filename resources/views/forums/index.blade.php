@@ -2,7 +2,7 @@
 @section('content')
 <div class ="breadcrumbs">
 	<b>Forums</b>
-<div class ="breadcrumbs">
+</div>
 <h1>Forums</h1>
 
 @foreach($forums as $forum)
