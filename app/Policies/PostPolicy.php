@@ -19,7 +19,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id == $post->user->id;
+        return $user->can('edit other users posts') || $user->id == $post->user->id;
     }
 
     /**

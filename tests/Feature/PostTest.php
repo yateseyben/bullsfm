@@ -116,4 +116,19 @@ class PostTest extends TestCase
 
         $this->assertNotNull($post->deleted_at);
     }
+
+    public function testAModeratorCanEditAnotherUsersPost()
+    {
+        $moderator = $this->userHelper->newModerator();
+
+        $post = $this->postHelper->newPost();
+
+        $this->be($moderator);
+
+        $input = ['content' => 'Some edited content.'];
+
+        $post->updatePost($input);
+
+        $this->AssertEquals($post->content, 'Some edited content.');
+    }
 }
