@@ -24,3 +24,14 @@
 .listings table {
 	width: 100%;
 }
+
+.logo {
+	width: 100%;
+	background-color: white;
+}
+
+@media (max-width: 500px) {
+	.logo img {
+		width: 100%;
+	}
+}

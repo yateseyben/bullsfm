@@ -22,7 +22,11 @@
     </head>
     <body>
         <div id="app">
-            <h1>{{ config('app.name', 'Laravel') }}</h1>
+            <div class="logo">
+                <a href="{{ route('home') }}">
+                    <img src="/images/logo.png" width="500" href="{{ route('home') }}">
+                </a>
+            </div>
             <nav class="navbar navbar-default navbar-static-top ben-navbar">
                 <div class="container">
                     <div class="navbar-header">
