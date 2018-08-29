@@ -36,7 +36,7 @@ class ForumsController extends Controller
 	public function show($id)
 	{
 		$forum = Forum::find($id);
-		$topics = $forum->topics;
+		$topics = $forum->topics->sortByDesc('updated_at');
 
 		return view::make('forums.show')->with('forum', $forum)->with('topics', $topics);
 	}
