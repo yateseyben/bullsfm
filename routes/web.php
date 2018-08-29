@@ -34,7 +34,7 @@ Route::group(['prefix' => 'forums'], function() {
     Route::get('/{id}/create-topic',[
         'as' => 'forums.createTopic',
         'uses' => 'ForumsController@createTopic',
-    ]);
+    ])->middleware('auth');
     Route::post('/{id}/store-topic',[
         'as' => 'forums.storeTopic',
         'uses' => 'ForumsController@storeTopic',
@@ -53,7 +53,7 @@ Route::group(['prefix' => 'topics'], function() {
     Route::get('/edit/{id}',[
         'as' => 'topics.edit',
         'uses' => 'TopicsController@edit'
-    ]);
+    ])->middleware('auth');;
     Route::post('update/{id}', [
         'as' => 'topics.update',
         'uses' => 'TopicsController@update'
@@ -64,7 +64,7 @@ Route::group(['prefix' => 'posts'], function() {
     Route::get('/edit/{id}', [
         'as' => 'posts.edit',
         'uses' => 'PostsController@edit'
-    ]);
+    ])->middleware('auth');;
     Route::post('update/{id}', [
         'as' => 'posts.updatePost',
         'uses' => 'PostsController@updatePost'
