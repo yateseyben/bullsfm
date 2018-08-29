@@ -5,7 +5,9 @@
 </div>
 <h1>{{ $forum->getName() }}</h1>
 
-<a href="{{ route('forums.createTopic', $forum->id) }}">Create A New Topic</a>
+<div class ="create-new-button">
+	<a href="{{ route('forums.createTopic', $forum->id) }}"><i class="fas fa-plus"></i> New Topic</a>
+</div>
 
 <div class = "topic-list listings">
 	<table>
@@ -15,9 +17,9 @@
 			<th width ="30%">Last Update</th>
 		</thead>
 		@foreach($topics as $topic)
-		<tr class="clickable-row" data-href="{{ route('topics.show', $topic->id) }}">
+		<tr>
 			<tbody>
-				<td><a href="{{ route('topics.show', $topic->id) }}">{{ $topic->getTitle() }}</a></td>
+				<td class ="topic-listing-title"><a href="{{ route('topics.show', $topic->id) }}">{{ $topic->getTitle() }}</a></td>
 				<td>{{ $topic->posts()->count() }}</td>
 				<td>{{ \Carbon\Carbon::parse($topic->posts()->max('created_at'))->format('d M Y g:i a') }}</td>	
 			</tbody>
@@ -25,12 +27,3 @@
 		@endforeach
 </div>
 @endsection
-<script>
-
-jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.location = $(this).data("href");
-    });
-});
-
-</script>

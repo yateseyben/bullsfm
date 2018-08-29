@@ -8,26 +8,69 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
+body {
+	font-family: "Frutiger Neue W02 Book",Arial,Helvetica,sans-serif;
+}
+
+h1 {
+	font-size: 44px;
+}
+
+.create-new-button {
+	background-color: green;
+	max-width: 160px;
+	font-weight: bold;
+	padding: 5px;
+	text-align: center;
+	float: right;
+}
+
+.create-new-button a {
+	color: white;
+}
+
+.nav-bar ul {
+	height: 40px;
+}
+
 .ben-navbar li {
 	display: inline;
 	list-style-type: none;
   	height: 40px;
   	line-height: 40px;
   	padding-right: 40px;
-
+  	font-size: 21px;
 }
 
 .ben-navbar {
 	background-color: black;
+}
+.ben-navbar ul {
+	padding-top: 6px;
 }
 
 .listings table {
 	width: 100%;
 }
 
+.topic-listing-title {
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.listings tr {
+	height: 20px;
+	font-size: 14px;
+}
+
 .logo {
 	width: 100%;
 	background-color: white;
+}
+
+.page-content {
+	margin-left: 50px;
+	margin-right: 50px;
 }
 
 @media (max-width: 500px) {
